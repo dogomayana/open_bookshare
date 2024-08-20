@@ -32,7 +32,7 @@ export default function DashNav() {
           <h1 className="text-[15px] font-semibold">
             Hello{" "}
             {fullName == undefined
-              ? userName.split(" ")[0]
+              ? userName?.split(" ")[0]
               : fullName?.split(" ")[0]}
             {"   "}&#128075;
           </h1>
