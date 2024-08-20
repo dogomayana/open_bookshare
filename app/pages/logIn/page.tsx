@@ -22,9 +22,6 @@ export default function LogIn() {
   auth.languageCode = "en";
   const router = useRouter();
   const { user } = useUser();
-  if (typeof document !== undefined && user) {
-    router.push("/dashboard");
-  }
   const supabase = createClient();
   const [userInfo, setUserInfo] = React.useState<any>({
     emailAddress: "",
@@ -44,6 +41,10 @@ export default function LogIn() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+if (user) {
+          router.push("/dashboard");
+        }
+
         // ...
       })
       .catch((error) => {
