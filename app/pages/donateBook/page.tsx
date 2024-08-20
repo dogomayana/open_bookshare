@@ -2,9 +2,33 @@
 
 import NavBar from "@/app/components/Navbar";
 import { supabase } from "@/app/config/supabase";
+import { useUser } from "@/app/context/userContext";
 import React from "react";
+import useSWR from "swr";
 
 function DonateBook() {
+  const { user } = useUser();
+  const fEmail: any | null = user?.email;
+  const fName: any | null = user?.displayName;
+
+  const getUserDetails = async () => {
+    const { data, error }: any = await supabase
+      .from(`bookshare_users`)
+      .select(`email,fullName`)
+      .eq("email", fEmail);
+
+    if (error) {
+      console.log(error);
+    }
+
+    return data[0]?.fullName;
+  };
+  const { data: fullName, error }: any = useSWR("/api/todos", getUserDetails, {
+    refreshInterval: 1000,
+  });
+
+  console.log("u", fName);
+
   const [bookDetails, setBookDetails] = React.useState<any>({
     bookName: "",
     isbn: "",
@@ -66,7 +90,7 @@ function DonateBook() {
         bookName: bookDetails.bookName,
         authorName: bookDetails.authorName,
         isbn: bookDetails.isbn,
-        donorName: bookDetails.donorName,
+        donorName: fullName == undefined ? fName : fullName,
         categories: selectedOption,
         bookImage: imgI.publicUrl,
         bookBrief: bookBrief,
@@ -137,7 +161,7 @@ function DonateBook() {
             type="text"
             name="authorName"
             id="authorName"
-            value={bookDetails.authorName}
+            value={bookDetails.authorNameName}
             onChange={bookChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter Author Name"
@@ -150,10 +174,8 @@ function DonateBook() {
           </span>
           <input
             type="text"
-            name="donorName"
-            id="donorName"
-            value={bookDetails.donorName}
-            onChange={bookChange}
+            value={fullName == undefined ? fName : fullName}
+            readOnly
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter Donor Name"
           />

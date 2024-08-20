@@ -1,15 +1,14 @@
 const { supabase } = require("../config/supabase");
-export async function getQuestions() {
+
+export const getUserDetails = async (email) => {
   const { data, error } = await supabase
-    .from(`trcn`)
-    .select(`id,category,questions,correctOption,options`);
-  //   .eq("category", `${filterCategory}`);
+    .from(`bookshare_users`)
+    .select(`email,fullName`)
+    .eq("email", email);
+
   if (error) {
-    // console.log(error?.statusText);
+    console.log(error);
   }
-  //   console.log(data);
+  console.log(data);
   return data;
-}
-const { data, error } = await supabase.storage
-  .from("book_share")
-  .download("folder/avatar1.png");
+};

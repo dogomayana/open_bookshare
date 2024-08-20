@@ -8,8 +8,8 @@ const routes = [
   "/",
   "/pages/allBooks",
   "/pages/category",
-  "pages/logIn",
-  "pages/signUp",
+  "/pages/logIn",
+  "/pages/signUp",
 ];
 export default function Provider({ children }) {
   const pathname = usePathname();

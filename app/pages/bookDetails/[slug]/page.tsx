@@ -17,8 +17,6 @@ export default function Page({ params }: { params: { slug: string } }) {
     const { data, error } = await supabase.storage
       .from("book_share")
       .download("book_image/test3.jpg");
-    console.log(data);
-    console.log(error);
   }
   return (
     <>

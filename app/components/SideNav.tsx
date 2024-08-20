@@ -14,19 +14,17 @@ export default function SideNav() {
   async function logOut() {
     try {
       Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        title: "You are about to log out?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Log Out",
       }).then((result: any) => {
         signOut(auth);
         if (result.isConfirmed) {
           Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
+            title: "Logged Out",
             icon: "success",
           });
         }
