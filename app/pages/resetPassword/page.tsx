@@ -5,17 +5,34 @@ import { ChangeHandler } from "@/app/eventTypes";
 import React from "react";
 import Link from "next/link";
 import NavBar from "@/app/components/Navbar";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { app } from "@/app/config/firebase";
 
 export default function ResetPassword() {
-  const [userInfo, setUserInfo] = React.useState<any>({
-    emailAddress: "",
-  });
-
-  const handleChange: ChangeHandler = (event) => {
-    const { name, value } = event.target;
-    setUserInfo((prev: any) => ({ ...prev, [name]: value }));
-    console.log(userInfo.fullName);
+  const auth = getAuth(app);
+  const actionCodeSettings = {
+    url: "https://book-share-mu.vercel.app/dashboard",
+    // Optional other settings
   };
+  const [emailAddress, setEmailAddress] = React.useState<any>("");
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const handleChange: ChangeHandler = (event) => {
+    setEmailAddress(event.target.value);
+  };
+
+  async function resetPassword(e: React.SyntheticEvent) {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      await sendPasswordResetEmail(auth, emailAddress, actionCodeSettings);
+      alert("email sent");
+    } catch (error: any) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // console.log(errorMessage);
+    }
+    setIsLoading(false);
+  }
 
   return (
     <>
@@ -28,7 +45,10 @@ export default function ResetPassword() {
             instructions on how to reset your password
           </p>
         </div>
-        <form className="w-full p-1 md:w-6/12 mx-auto md:p-2">
+        <form
+          onSubmit={resetPassword}
+          className="w-full p-1 md:w-6/12 mx-auto md:p-2"
+        >
           <label htmlFor="Email Address" className="block my-5">
             <span className="my-2 block text-gray-600 text-[15px]">Email</span>
             <input
@@ -37,17 +57,17 @@ export default function ResetPassword() {
               id="email"
               onChange={handleChange}
               required
+              value={emailAddress}
               className="p-3 w-full block border rounded-md border-gray-400 placeholder:text-sm"
-              placeholder="user@gamil.com"
+              placeholder="user@gmail.com"
             />
           </label>
 
           <button
             type="submit"
-            value="Creat Account"
             className="p-3 bg-[#0095eb] hover:bg-black tColor w-full my-3 rounded-md text-sm"
           >
-            Send Email
+            {isLoading ? "Sending mail" : "Send Mail"}
           </button>
         </form>
 

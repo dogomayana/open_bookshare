@@ -11,12 +11,31 @@ export default function Page({ params }: { params: { slug: string } }) {
     "/book2.png",
     "/book1.png",
   ];
-  const pol = "lop";
+  const bookPDF = "book_image/test3.jpg";
 
-  async function download() {
-    const { data, error } = await supabase.storage
+  async function download(
+    event: React.MouseEvent<HTMLButtonElement>,
+    bookPDF: any
+  ) {
+    let fileName = bookPDF.split("/")[1];
+
+    const { data, error }: any = await supabase.storage
       .from("book_share")
-      .download("book_image/test3.jpg");
+      .download(bookPDF);
+    const url = URL.createObjectURL(data);
+    console.log(data);
+    console.log(typeof url);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+
+    // Append the anchor to the document and trigger the download
+    document.body.appendChild(a);
+    a.click();
+
+    // Cleanup: remove the anchor and revoke the object URL
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   }
   return (
     <>
@@ -94,7 +113,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
           <button
             className="py-3 w-full mt-5 px-5 rounded-sm bgColor tColor"
-            onClick={download}
+            onClick={(event) => download(event, bookPDF)}
           >
             Download
           </button>
@@ -128,7 +147,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
               <Link
                 href={`/pages/bookDetails/${"lop"}`}
-                onClick={download}
+                // onClick={(event) =>download (event,bookPDF)}
                 className="px-3 block text-center py-2 my-3 rounded-md text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
               >
                 Download

@@ -49,7 +49,7 @@ export default function Kop() {
                   </h3>
 
                   <Link
-                    href={`/pages/${"pol"}`}
+                    href={`/pages/bookDetails/${"pol"}`}
                     className="px-3 block text-center py-2 my-3 rounded-md text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
                   >
                     Download
@@ -86,7 +86,7 @@ export default function Kop() {
                   </h3>
 
                   <Link
-                    href={`/pages/${"pol"}`}
+                    href={`/pages/bookDetails/${"pol"}`}
                     className="px-3 block text-center py-2 my-3 rounded-md text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
                   >
                     Download

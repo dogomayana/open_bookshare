@@ -12,7 +12,7 @@ export default function DashNav() {
       <nav className="hidden w-full p-3 md:flex justify-between border border-b-red-600">
         <div className="">
           <h1 className="text-[15px] font-semibold">
-            Hello {userName?.split(" ")[1]}
+            Hello {userName?.split(" ")[0]}
             {"   "}&#128075;
           </h1>
           <p className="text-sm text-gray-600">
@@ -28,9 +28,13 @@ export default function DashNav() {
             disabled
             className="w-[300px] p-1 rounded-md border border-gray-400 bg-white"
           />
-
+          {/* <img width="80" height="80" src="https://img.icons8.com/officel/80/user.png" alt="user"/> */}
           <img
-            src={user?.photoURL}
+            src={
+              user?.photoURL == undefined
+                ? "https://img.icons8.com/officel/80/user.png"
+                : user?.photoURL
+            }
             alt="userImage"
             className="h-[50px] w-[50px] rounded-full"
           />

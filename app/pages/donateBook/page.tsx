@@ -177,7 +177,7 @@ function DonateBook() {
             value={fullName == undefined ? fName : fullName}
             readOnly
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
-            placeholder="Enter Donor Name"
+            placeholder="Enter donor name"
           />
         </label>
         <label htmlFor="bookReview" className="block">

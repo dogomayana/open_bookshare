@@ -10,6 +10,7 @@ const routes = [
   "/pages/category",
   "/pages/logIn",
   "/pages/signUp",
+  "/pages/resetPassword",
 ];
 export default function Provider({ children }) {
   const pathname = usePathname();

@@ -16,7 +16,6 @@ export default function UserContextComp({ children }) {
       try {
         if (user) {
           const { uid, displayName, email, photoURL } = user;
-          console.log(user);
           setUser({ uid, displayName, email, photoURL });
         } else setUser(null);
       } catch (error) {
