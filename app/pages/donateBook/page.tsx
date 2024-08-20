@@ -27,13 +27,10 @@ function DonateBook() {
     refreshInterval: 1000,
   });
 
-  console.log("u", fName);
-
   const [bookDetails, setBookDetails] = React.useState<any>({
     bookName: "",
     isbn: "",
     authorName: "",
-    donorName: "",
   });
 
   const [selectedOption, setSelectedOption] = React.useState<string>("");

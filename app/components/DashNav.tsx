@@ -2,17 +2,38 @@
 "use client";
 
 import { useUser } from "@/app/context/userContext";
+import { supabase } from "../config/supabase";
+import useSWR from "swr";
 
 export default function DashNav() {
   const { user } = useUser();
   let userName: string = user?.displayName;
+  const fEmail: any | null = user?.email;
 
+  const getUserDetails = async () => {
+    const { data, error }: any = await supabase
+      .from(`bookshare_users`)
+      .select(`email,fullName`)
+      .eq("email", fEmail);
+
+    if (error) {
+      // console.log(error);
+    }
+
+    return data[0]?.fullName;
+  };
+  const { data: fullName, error }: any = useSWR("/api/todos", getUserDetails, {
+    refreshInterval: 1000,
+  });
   return (
     <>
       <nav className="hidden w-full p-3 md:flex justify-between border border-b-red-600">
         <div className="">
           <h1 className="text-[15px] font-semibold">
-            Hello {userName?.split(" ")[0]}
+            Hello{" "}
+            {fullName == undefined
+              ? userName.split(" ")[0]
+              : fullName.split(" ")[0]}
             {"   "}&#128075;
           </h1>
           <p className="text-sm text-gray-600">
