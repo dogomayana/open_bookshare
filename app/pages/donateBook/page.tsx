@@ -6,40 +6,28 @@ import { useUser } from "@/app/context/userContext";
 import React, { useEffect } from "react";
 
 function DonateBook() {
-  const { user } = useUser();
-  const fEmail: any | null = user?.email;
+  const { user, fullName } = useUser();
+
   const fName: any | null = user?.displayName;
+  console.log(fName ?? fullName);
 
-  const [fullName, setFullName] = React.useState("");
-  const getUserDetails = async () => {
-    const { data, error }: any = await supabase
-      .from(`bookshare_users`)
-      .select(`email,fullName`)
-      .eq("email", fEmail);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       // setLoading(true);
+  //       const result = await getUserDetails();
+  //       setFullName(result);
+  //     } catch (err) {
+  //       console.log(err);
+  //     } finally {
+  //       // setLoading(falsejj);
+  //     }
+  //   };
 
-    if (error) {
-      // console.log(error);
-    }
+  //   fetchData();
 
-    return data[0]?.fullName;
-  };
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // setLoading(true);
-        const result = await getUserDetails();
-        setFullName(result);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        // setLoading(falsejj);
-      }
-    };
-
-    fetchData();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fName]);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [fName]);
 
   const [bookDetails, setBookDetails] = React.useState<any>({
     bookName: "",
@@ -101,7 +89,7 @@ function DonateBook() {
         bookName: bookDetails.bookName,
         authorName: bookDetails.authorName,
         isbn: bookDetails.isbn,
-        donorName: fullName == null ? fName : fullName,
+        donorName: fName ?? fullName,
         categories: selectedOption,
         bookImage: imgI.publicUrl,
         bookBrief: bookBrief,
@@ -185,7 +173,7 @@ function DonateBook() {
           </span>
           <input
             type="text"
-            value={fullName == "" ? fName : fullName}
+            value={fName ?? fullName}
             readOnly
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter donor name"

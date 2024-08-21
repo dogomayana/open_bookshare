@@ -2,49 +2,13 @@
 "use client";
 
 import { useUser } from "@/app/context/userContext";
-import { supabase } from "../config/supabase";
-import useSWR from "swr";
-import { useEffect } from "react";
+
 import React from "react";
 
 export default function DashNav() {
-  const { user } = useUser();
+  const { user, fullName } = useUser();
+
   let userName: string = user?.displayName;
-
-  const fEmail: any | null = user?.email;
-
-  const [fullName, setFullName] = React.useState("");
-  const getUserDetails = async () => {
-    const { data, error }: any = await supabase
-      .from(`bookshare_users`)
-      .select(`email,fullName`)
-      .eq("email", fEmail);
-
-    if (error) {
-      // console.log(error);
-    }
-
-    return data[0]?.fullName;
-  };
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // setLoading(true);
-        const result = await getUserDetails();
-        setFullName(result);
-        console.log("lop", result);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        // setLoading(falsejj);
-      }
-    };
-
-    fetchData();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userName]);
-  console.log(fullName);
 
   return (
     <>
