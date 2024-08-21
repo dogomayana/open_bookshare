@@ -124,7 +124,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
           <button
             className="py-3 w-full mt-5 px-5 rounded-sm bgColor tColor"
-            onClick={(event) => download(event, bookPDF, "loppppp")}
+            onClick={(event) => download(event, bookPDF, "loppp")}
           >
             Download
           </button>

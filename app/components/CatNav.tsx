@@ -9,8 +9,11 @@ import React from "react";
 import { getAuth, signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 import { app } from "../config/firebase";
+import { useUser } from "../context/userContext";
 
 export default function CatNav() {
+  const { setFullName } = useUser();
+
   const auth = getAuth(app);
 
   const pathname = usePathname();
@@ -32,6 +35,8 @@ export default function CatNav() {
         confirmButtonText: "Log Out",
       }).then((result: any) => {
         signOut(auth);
+        setFullName(null);
+
         if (result.isConfirmed) {
           Swal.fire({
             title: "Logged Out",

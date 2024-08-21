@@ -7,7 +7,10 @@ import Link from "next/link";
 import { app } from "../config/firebase";
 import { getAuth, signOut } from "firebase/auth";
 import Swal from "sweetalert2";
+import { useUser } from "../context/userContext";
 export default function SideNav() {
+  const { setFullName } = useUser();
+
   const auth = getAuth(app);
 
   const pathname = usePathname();
@@ -22,6 +25,7 @@ export default function SideNav() {
         confirmButtonText: "Log Out",
       }).then((result: any) => {
         signOut(auth);
+        setFullName(null);
         if (result.isConfirmed) {
           Swal.fire({
             title: "Logged Out",
