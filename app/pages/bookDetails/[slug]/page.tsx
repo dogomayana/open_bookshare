@@ -3,7 +3,12 @@ import NavBar from "@/app/components/Navbar";
 import { supabase } from "@/app/config/supabase";
 import Image from "next/image";
 import Link from "next/link";
+import { useUser } from "@/app/context/userContext";
+
 export default function Page({ params }: { params: { slug: string } }) {
+  const { user, fullName } = useUser();
+  const fName: any | null = user?.displayName;
+
   const booksCatt = [
     "/book3.png",
     "/book4.png",
@@ -15,7 +20,8 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   async function download(
     event: React.MouseEvent<HTMLButtonElement>,
-    bookPDF: any
+    bookPDF: any,
+    bookName: any
   ) {
     let fileName = bookPDF.split("/")[1];
 
@@ -35,6 +41,12 @@ export default function Page({ params }: { params: { slug: string } }) {
     // Cleanup: remove the anchor and revoke the object URL
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+    const { error: err } = await supabase
+      .from("bookshare_download")
+      .insert({ bookName: bookName, fullName: fName ?? fullName });
+    if (err) {
+      console.log(err.message);
+    }
   }
   return (
     <>
@@ -112,7 +124,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
           <button
             className="py-3 w-full mt-5 px-5 rounded-sm bgColor tColor"
-            onClick={(event) => download(event, bookPDF)}
+            onClick={(event) => download(event, bookPDF, "loppppp")}
           >
             Download
           </button>

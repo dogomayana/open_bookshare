@@ -9,25 +9,6 @@ function DonateBook() {
   const { user, fullName } = useUser();
 
   const fName: any | null = user?.displayName;
-  console.log(fName ?? fullName);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       // setLoading(true);
-  //       const result = await getUserDetails();
-  //       setFullName(result);
-  //     } catch (err) {
-  //       console.log(err);
-  //     } finally {
-  //       // setLoading(falsejj);
-  //     }
-  //   };
-
-  //   fetchData();
-
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [fName]);
 
   const [bookDetails, setBookDetails] = React.useState<any>({
     bookName: "",
