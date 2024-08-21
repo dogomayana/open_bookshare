@@ -26,7 +26,7 @@ export default function HomeMain() {
   return (
     <>
       <div className="bg-white p-3 w-full my-14">
-        <h1 className="text-blue-500 my-8 text-center text-lg font-medium">
+        <h1 className="text-blue-500 my-8 text-center text-lg font-bold">
           Categories
         </h1>
         <div className="w-full my-8 md:w-10/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-4 place-content-center">
@@ -50,7 +50,7 @@ export default function HomeMain() {
         </div>
 
         <article className="my-8">
-          <h1 className="text-blue-500 my-16 text-center text-lg font-medium">
+          <h1 className="text-blue-500 my-16 text-center text-lg font-bold">
             Featured
           </h1>
 

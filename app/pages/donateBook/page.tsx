@@ -3,14 +3,14 @@
 import NavBar from "@/app/components/Navbar";
 import { supabase } from "@/app/config/supabase";
 import { useUser } from "@/app/context/userContext";
-import React from "react";
-import useSWR from "swr";
+import React, { useEffect } from "react";
 
 function DonateBook() {
   const { user } = useUser();
   const fEmail: any | null = user?.email;
   const fName: any | null = user?.displayName;
 
+  const [fullName, setFullName] = React.useState("");
   const getUserDetails = async () => {
     const { data, error }: any = await supabase
       .from(`bookshare_users`)
@@ -18,14 +18,28 @@ function DonateBook() {
       .eq("email", fEmail);
 
     if (error) {
-      console.log(error);
+      // console.log(error);
     }
 
     return data[0]?.fullName;
   };
-  const { data: fullName, error }: any = useSWR("/api/todos", getUserDetails, {
-    refreshInterval: 1000,
-  });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // setLoading(true);
+        const result = await getUserDetails();
+        setFullName(result);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        // setLoading(falsejj);
+      }
+    };
+
+    fetchData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fName]);
 
   const [bookDetails, setBookDetails] = React.useState<any>({
     bookName: "",
@@ -87,7 +101,7 @@ function DonateBook() {
         bookName: bookDetails.bookName,
         authorName: bookDetails.authorName,
         isbn: bookDetails.isbn,
-        donorName: fullName == undefined ? fName : fullName,
+        donorName: fullName == null ? fName : fullName,
         categories: selectedOption,
         bookImage: imgI.publicUrl,
         bookBrief: bookBrief,
@@ -165,13 +179,13 @@ function DonateBook() {
           />
         </label>
 
-        <label htmlFor="donorName" className="block">
+        <label className="block">
           <span className="my-3 block text-gray-600 text-[15px]">
             Donor Name
           </span>
           <input
             type="text"
-            value={fullName == undefined ? fName : fullName}
+            value={fullName == "" ? fName : fullName}
             readOnly
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter donor name"

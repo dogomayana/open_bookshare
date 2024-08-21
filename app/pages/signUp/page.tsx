@@ -53,59 +53,29 @@ export default function SignUp() {
       );
       // Signed in
       const user = userCredential.user;
-
-      const { error }: any = await supabase.from("bookshare_users").insert({
-        email: userInfo.emailAddress,
-        fullName: userInfo.fullName,
-        phoneNum: userInfo.phoneNumber,
-      });
-      if (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: `Something went wrong! ${error?.message}`,
-        });
-      }
-      console.log("User signed in:", user);
+      console.log(user);
       if (user) {
+        const { error }: any = await supabase.from("bookshare_users").insert({
+          email: userInfo.emailAddress,
+          fullName: userInfo.fullName,
+          phoneNum: userInfo.phoneNumber,
+        });
+        if (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Something went wrong! ${error?.message}`,
+          });
+        }
         router.push("/dashboard");
       }
+
       //
     } catch (error: any) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error("Error signing in:", errorCode, errorMessage);
     }
-    // createUserWithEmailAndPassword(
-    //   auth,
-    //   userInfo.emailAddress,
-    //   userInfo.password
-    // )
-    //   .then((userCredential) => {
-    //     // Signed up
-    //     const user = userCredential.user;
-    //     const { error }: any = supabase.from("bookshare_users").insert({
-    //       email: userInfo.emailAddress,
-    //       fullName: userInfo.fullName,
-    //       phoneNum: userInfo.phoneNumber,
-    //     });
-    //     if (error) {
-    //       Swal.fire({
-    //         icon: "error",
-    //         title: "Oops...",
-    //         text: `Something went wrong! ${error?.message}`,
-    //       });
-    //     }
-    //     if (user) {
-    //       router.push("/dashboard");
-    //     }
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     // ..
-    //   });
 
     setIsLoading(false);
   };
@@ -115,7 +85,7 @@ export default function SignUp() {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const user = result.user;
-        console.log(user);
+
         if (user) {
           router.push("/dashboard");
         }
@@ -131,23 +101,6 @@ export default function SignUp() {
         // ...
       });
   }
-  const data = {
-    email: userInfo.emailAddress,
-    password: userInfo.password,
-  };
-  const submitForm = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    const { error } = await supabase.auth.signUp(data);
-    if (error?.message) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `Something went wrong! ${error?.message}`,
-      });
-    }
-    setIsLoading(false);
-  };
 
   return (
     <>

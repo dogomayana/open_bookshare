@@ -22,6 +22,10 @@ export default function LogIn() {
   auth.languageCode = "en";
   const router = useRouter();
   const { user } = useUser();
+
+  if (typeof window !== "undefined" && user) {
+    router.push("/dashboard");
+  }
   const supabase = createClient();
   const [userInfo, setUserInfo] = React.useState<any>({
     emailAddress: "",
@@ -41,11 +45,10 @@ export default function LogIn() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-if (user) {
+
+        if (user) {
           router.push("/dashboard");
         }
-
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -53,6 +56,7 @@ if (user) {
       });
     setIsLoading(false);
   };
+
   function googlePop() {
     signInWithPopup(auth, provider)
       .then((result) => {

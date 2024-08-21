@@ -23,8 +23,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       .from("book_share")
       .download(bookPDF);
     const url = URL.createObjectURL(data);
-    console.log(data);
-    console.log(typeof url);
+
     const a = document.createElement("a");
     a.href = url;
     a.download = fileName;
