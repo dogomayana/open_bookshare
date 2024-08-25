@@ -36,12 +36,13 @@ export default function HomePage() {
   return (
     <>
       <NavBar />
+      {/* Mobile */}
       <main className="w-full mt-3 md:hidden">
         <div className="w-full p-3">
           <p className="text-center text-sm text-gray-700">
             Let&apos;s make the best investment
           </p>
-          <h1 className="text-2xl font-semibold my-8 text-center">
+          <h1 className="text-[32px]   font-extrabold my-8 text-center">
             Unlock a World of Stories.{" "}
             <Link
               href={user ? "/pages/donateBook" : "/pages/signUp"}
@@ -59,7 +60,7 @@ export default function HomePage() {
             alt="bannerImage"
             width={320}
             height={160}
-            style={{ width: "100%", height: "100%", objectFit: "fill" }}
+            // style={{ width: "100%", height: "100%", objectFit: "fill" }}
             priority={true}
           />
           <p className="text-center text-sm mt-4 text-gray-700">
@@ -113,7 +114,7 @@ export default function HomePage() {
             <p className="text-sm text-gray-700">
               Let&apos;s make the best investment
             </p>
-            <h1 className="text-2xl my-8 ">
+            <h1 className="text-[42px] font-bold my-8 ">
               Unlock a World of Stories.{" "}
               <Link
                 href={user ? "/pages/donateBook" : "/pages/signUp"}
@@ -166,14 +167,12 @@ export default function HomePage() {
             <Image
               src="/banner.png"
               alt="bannerImage"
-              width={320}
-              height={160}
-              style={{ width: "100%", height: "100%", objectFit: "fill" }}
+              width={600}
+              height={600}
               priority={true}
             />
           </div>
-        </main>{" "}
-        {/*  */}
+        </main>
       </main>
       <HomeMain />
 

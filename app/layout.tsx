@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={`${poppins.className} max-w-[1280px]`}>
         <Provider>
-          {typeof document !== undefined && (
+          {typeof window !== undefined && (
             <span className="block">
               {children}
 

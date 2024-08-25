@@ -1,9 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import Swal from "sweetalert2";
 import React from "react";
-import { createPortal } from "react-dom";
 import { testimonials } from "@/app/testData";
 import { Comic_Neue, Lobster } from "next/font/google";
 const lobster = Comic_Neue({ weight: "400", subsets: ["latin"] });
@@ -26,7 +24,7 @@ export default function HomeMain() {
   return (
     <>
       <div className="bg-white p-3 w-full my-14">
-        <h1 className="text-blue-500 my-8 text-center text-lg font-bold">
+        <h1 className="text-blue-500 mt-8 text-center text-[30px] font-bold">
           Categories
         </h1>
         <div className="w-full my-8 md:w-10/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-4 place-content-center">
@@ -49,12 +47,12 @@ export default function HomeMain() {
           ))}
         </div>
 
-        <article className="my-8">
-          <h1 className="text-blue-500 my-16 text-center text-lg font-bold">
+        <article className=" ">
+          <h1 className="text-blue-500 mt-8 text-center text-[30px] font-bold">
             Featured
           </h1>
 
-          <div className="w-full md:w-11/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
+          <div className="w-full md:w-11/12 mx-auto my-8 bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
             {booksCatt.map((book, index) => (
               <div key={index} className="block shadow-md p-1">
                 <Link href={`/pages/${pol}`} className="cursor-pointer ">
@@ -88,14 +86,14 @@ export default function HomeMain() {
           </div>
           <Link
             href={"/pages/allBooks"}
-            className="pr-12 mt-2 text-blue-600 cursor-pointer float-right block"
+            className="pr-12 mt-2 text-base text-blue-600 cursor-pointer float-right block"
           >
             View all
           </Link>
         </article>
 
         <article className="mt-16">
-          <h1 className="text-center my-8 text-lg font-semibold">
+          <h1 className="text-center my-8 text-[lg] md:text-[30px] font-semibold">
             About BookShare
           </h1>
           <div className="md:flex md:w-11/12 w-full mx-auto justify-evenly p-3">

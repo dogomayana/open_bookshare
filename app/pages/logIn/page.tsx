@@ -23,7 +23,7 @@ export default function LogIn() {
   const router = useRouter();
   const { user } = useUser();
 
-  if (typeof window !== "undefined" && user) {
+  if (typeof window !== undefined && user) {
     router.push("/dashboard");
   }
   const supabase = createClient();

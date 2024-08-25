@@ -21,7 +21,7 @@ export default function DashNav() {
               : fullName?.split(" ")[0]}
             {"   "}&#128075;
           </h1>
-          <p className="text-sm text-gray-600">
+          <p className="text-[12px] text-gray-600">
             Welcome back to your Bookshare Account!
           </p>
         </div>
