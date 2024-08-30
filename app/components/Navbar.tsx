@@ -46,7 +46,7 @@ export default function NavBar() {
           </Link>
         </div>
 
-        <div className={user ? "hidden" : `flex space-x-8 my-auto`}>
+        <div className={user ? "hidden" : `hidden md:flex space-x-8 my-auto`}>
           <Link
             className="text-base font-medium p-2 rounded-md text-gray-900 hover:bg-[#0095eb] hover:text-gray-100"
             href={"/pages/signUp"}

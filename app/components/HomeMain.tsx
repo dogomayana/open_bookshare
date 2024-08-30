@@ -43,23 +43,23 @@ export default function HomeMain() {
         </div>
 
         <article className=" ">
-          <h1 className="text-blue-500 mt-8 text-center text-[30px] font-bold">
+          <h1 className="text-blue-500 mt-8 text-center text-[20px] md:text-[30px] font-bold">
             Featured
           </h1>
           <FeaturedPopular />
           <Link
             href={"/pages/allBooks"}
-            className="pr-12 mt-2 text-base text-blue-600 cursor-pointer float-right block"
+            className="pr-2 md:pr-12 mt-2 text-base text-blue-600 cursor-pointer text-end md:float-right block"
           >
             View all
           </Link>
         </article>
 
         <article className="mt-16">
-          <h1 className="text-center my-8 text-[lg] md:text-[30px] font-semibold">
+          <h1 className="text-center mb-4 text-[20px] md:text-[30px]  font-semibold">
             About BookShare
           </h1>
-          <div className="md:flex md:w-11/12 w-full mx-auto justify-evenly p-3">
+          <div className="md:flex md:w-11/12 w-full mx-auto md:justify-evenly p-3">
             <div className="block w-full md:w-[520px]">
               <Image
                 src={"/Left.png"}
@@ -71,8 +71,8 @@ export default function HomeMain() {
               />
             </div>
 
-            <div className="w-full md:w-5/12 md:my-auto">
-              <p className="text-sm md:text-base p-3">
+            <div className="w-full my-2 md:w-5/12 md:my-auto">
+              <p className="text-[15px] md:text-base">
                 BookShare is a platform dedicated to promoting literacy and
                 access to books for everyone. We believe that everyone should
                 have the opportunity to read and learn, regardless of their
@@ -92,7 +92,7 @@ export default function HomeMain() {
         </article>
 
         {/* Book concept */}
-        <section className="bgColor p-3 my-16">
+        <section className="bgColor p-3 my-8">
           <h1 className="text-lg font-medium text-center text-white my-3">
             The 3 Concepts for a BookShare
           </h1>
@@ -169,7 +169,7 @@ export default function HomeMain() {
         </section>
 
         {/* Testimonial */}
-        <section className="w-full md:w-11/12 md:mx-auto p-3 mt-12">
+        <section className="w-full md:w-11/12 md:mx-auto p-3 mt-8">
           <h1 className="text-xl">Testimonial</h1>
           <div className="space-y-3 mt-8 w-full md:w-10/12 md:mx-auto md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
             {testimonials.map((tm, index) => (
@@ -209,7 +209,7 @@ export default function HomeMain() {
         </section>
 
         {/* Subscription*/}
-        <div className="bg-black md:flex md:justify-between w-full p-5 md:w-10/12 mx-auto my-10">
+        <div className="bg-black md:flex md:justify-between w-full p-5 md:w-10/12 mx-auto my-8">
           <div className="my-4 md:my-0 md:w-3/12">
             <p className={`text-center md:text-start text-sm text-gray-100`}>
               Subscribe to Our Newsletter

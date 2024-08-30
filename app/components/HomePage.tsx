@@ -146,16 +146,16 @@ export default function HomePage() {
               <NoItem isOpen={showModal} onClose={closeModal} />
             </div>
 
-            <div className="w-full flex justify-between mt-7 mb-4">
+            <div className="w-full flex justify-between space-x-2 mt-7 mb-4">
               <Link
                 href={user ? "/pages/donateBook" : "/pages/signUp"}
-                className="w-5/12 bg-[#0095eb] text-gray-100 text-center text-sm font-semibold rounded-md p-3 block"
+                className="w-6/12 my-auto bg-[#0095eb] text-gray-100 text-center text-sm font-semibold rounded-md p-3 block"
               >
                 Donate now
               </Link>
               <Link
                 href={"/pages/allBooks"}
-                className="w-5/12 bg-blue-100 text-[#0095eb] text-center text-sm font-semibold rounded-md p-3 block"
+                className="w-6/12 my-auto bg-blue-100 text-[#0095eb] text-center text-sm font-semibold rounded-md p-3 block"
               >
                 Download now
               </Link>
