@@ -220,7 +220,7 @@ function DonateBook() {
         <button
           className="p-3 bg-blue-200 text-blue-700 w-5/12 mx-auto my-8 block"
           type="submit"
-        {/* disabled={fileChecker.size / 1e6 > 5 || imgChecker.size / 1e3 > 4}*/}
+    
         >
           {isLoading ? "Submiting..." : "Submit"}
         </button>
