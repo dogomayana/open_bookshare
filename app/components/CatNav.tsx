@@ -165,9 +165,9 @@ export default function CatNav() {
               {/* Book Management */}
               <h1 className="text-lg font-medium mt-6">Book Management</h1>
               <Link
-                href={"/pages/dashboard"}
+                href={"/dashboard/allBooks"}
                 className={`link ${
-                  pathname === "/dashboard/mybooks"
+                  pathname === "/dashboard/allBooks"
                     ? "flex my-2 text-[14px] p-2 bg-blue-100"
                     : "flex my-2 p-2 text-[14px]"
                 }`}
@@ -179,7 +179,7 @@ export default function CatNav() {
                     height={20}
                   />
                 </span>
-                <span className="my-auto block ">Download Bookk</span>
+                <span className="my-auto block ">Download Book</span>
               </Link>
 
               <Link
