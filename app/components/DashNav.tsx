@@ -12,7 +12,7 @@ export default function DashNav() {
 
   return (
     <>
-      <nav className="hidden w-full p-3 md:flex justify-between border border-b-red-600">
+      <nav className="hidden w-full p-3 mb-3 md:flex justify-between border border-b-[#637381]">
         <div className="">
           <h1 className="text-[15px] font-semibold">
             Hello{" "}
@@ -21,7 +21,7 @@ export default function DashNav() {
               : fullName?.split(" ")[0]}
             {"   "}&#128075;
           </h1>
-          <p className="text-[12px] text-gray-600">
+          <p className="text-[14px] text-[#85878D]">
             Welcome back to your Bookshare Account!
           </p>
         </div>
