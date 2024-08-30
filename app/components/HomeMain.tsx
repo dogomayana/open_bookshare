@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { testimonials } from "@/app/testData";
 import { Comic_Neue, Lobster } from "next/font/google";
+import FeaturedPopular from "./FeaturedPopular";
 const lobster = Comic_Neue({ weight: "400", subsets: ["latin"] });
 
 export default function HomeMain() {
@@ -13,13 +14,7 @@ export default function HomeMain() {
     { value: "tech", name: "Tech", imgSrc: "/book3.png" },
     { value: "finance", name: "Finance", imgSrc: "/book3.png" },
   ];
-  const booksCatt = [
-    "/book3.png",
-    "/book4.png",
-    "/book_1.png",
-    "/book2.png",
-    "/book1.png",
-  ];
+
   const pol = "lop";
   return (
     <>
@@ -51,39 +46,7 @@ export default function HomeMain() {
           <h1 className="text-blue-500 mt-8 text-center text-[30px] font-bold">
             Featured
           </h1>
-
-          <div className="w-full md:w-11/12 mx-auto my-8 bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
-            {booksCatt.map((book, index) => (
-              <div key={index} className="block shadow-md p-1">
-                <Link href={`/pages/${pol}`} className="cursor-pointer ">
-                  <span key={index} className="block p-3">
-                    <Image
-                      src={book}
-                      alt="bannerImage"
-                      width={170}
-                      height={171}
-                      priority={true}
-                    />
-                  </span>
-                </Link>
-
-                <h1 className="pl-3 py-1 text-ellipsis text-[15px]">
-                  What i learned from trees
-                </h1>
-                <h3 className="pl-3  mb-4 text-gray-500 text-sm">
-                  Author Name
-                </h3>
-
-                <Link
-                  href={`/pages/bookDetails/${pol}`}
-                  className="px-3 block text-center py-2 my-3 rounded-md cursor-pointer text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
-                >
-                  Download
-                </Link>
-                {/* </span> */}
-              </div>
-            ))}
-          </div>
+          <FeaturedPopular />
           <Link
             href={"/pages/allBooks"}
             className="pr-12 mt-2 text-base text-blue-600 cursor-pointer float-right block"
