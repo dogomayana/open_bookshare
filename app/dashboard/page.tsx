@@ -24,7 +24,7 @@ export default function Kop() {
                 height={50}
               />
 
-              <span className="text-[17px] text-[#0066FF] my-auto">
+              <span className="text-sm text-[#0066FF] my-auto">
                 Book of the Week
               </span>
             </span>
@@ -36,7 +36,7 @@ export default function Kop() {
                 height={50}
               />
 
-              <span className="text-[17px] text-[#0066FF] my-auto">
+              <span className="text-sm text-[#0066FF] my-auto">
                 30 Book Donors
               </span>
             </span>
@@ -48,7 +48,7 @@ export default function Kop() {
                 height={50}
               />
 
-              <span className="text-[17px] text-[#0066FF] my-auto">
+              <span className="text-sm text-[#0066FF] my-auto">
                 20 Book Readers{" "}
               </span>
             </span>

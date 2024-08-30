@@ -72,18 +72,14 @@ export default function Mybooks() {
             </Link>
           </div>
           <div className="mt-8 p-3 bg-white rounded-md">
-            <h1 className="text-center">Book Details</h1>
-            <span className="my-3 block h-[171px]">
+            <h1 className="text-center text-base">Book Details</h1>
+
+            <span className="my-3 block">
               <Image
                 src={"/book2.png"}
                 alt="bannerImage"
-                width={320}
-                height={160}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "fill",
-                }}
+                width={170}
+                height={171}
                 priority={true}
               />
             </span>
@@ -99,7 +95,7 @@ export default function Mybooks() {
               href={`/pages/${"bookslug"}`}
               className="p-3 bgColor text-white block my-4 rounded-md  text-center"
             >
-              Read Now
+              Download
             </Link>
           </div>
         </div>

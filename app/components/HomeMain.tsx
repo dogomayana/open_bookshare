@@ -19,7 +19,7 @@ export default function HomeMain() {
   return (
     <>
       <div className="bg-white p-3 w-full my-14">
-        <h1 className="text-blue-500 mt-8 text-center text-[30px] font-bold">
+        <h1 className="text-blue-500 mt-8 text-center text-[24px] md:text-[30px] font-bold">
           Categories
         </h1>
         <div className="w-full my-8 md:w-10/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-4 place-content-center">
@@ -43,7 +43,7 @@ export default function HomeMain() {
         </div>
 
         <article className=" ">
-          <h1 className="text-blue-500 mt-8 text-center text-[20px] md:text-[30px] font-bold">
+          <h1 className="text-blue-500 mt-8 text-center text-[24px] md:text-[30px] font-bold">
             Featured
           </h1>
           <FeaturedPopular />
@@ -72,7 +72,7 @@ export default function HomeMain() {
             </div>
 
             <div className="w-full my-2 md:w-5/12 md:my-auto">
-              <p className="text-[15px] md:text-base">
+              <p className="text-base">
                 BookShare is a platform dedicated to promoting literacy and
                 access to books for everyone. We believe that everyone should
                 have the opportunity to read and learn, regardless of their
@@ -82,8 +82,8 @@ export default function HomeMain() {
                 spread the joy of reading
               </p>
               <Link
-                href={"#"}
-                className="px-3 w-6/12 block mx-auto text-center py-2 my-3 rounded-md text-sm font-semibold text-blue-100 bg-[#0095eb] hover:text-gray-100 hover:bg-[#0095eb]"
+                href={"/pages/donateBook"}
+                className="p-3 w-6/12 block mx-auto text-center my-3 rounded-md text-sm font-semibold text-blue-100 bg-[#0095eb] hover:text-gray-100 hover:bg-[#0095eb]"
               >
                 Donate Now
               </Link>
