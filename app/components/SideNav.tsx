@@ -34,13 +34,6 @@ export default function SideNav() {
         }
       });
     } catch (error) {}
-    // signOut(auth)
-    //   .then(() => {
-    //     // Sign-out successful.
-    //   })
-    //   .catch((error) => {
-    //     // An error happened.
-    //   });
   }
   return (
     <div className="hidden md:block md:p-4 md:fixed md:bg-white md:h-screen md:left-0 md:flex-none md:w-64">
@@ -97,9 +90,9 @@ export default function SideNav() {
           {/* Book Management */}
           <h1 className="text-lg font-medium mt-10">Book Management</h1>
           <Link
-            href={"/pages/dashboard"}
+            href={"/dashboard/allBooks"}
             className={`link ${
-              pathname === "/dashboard/mybooks"
+              pathname === "/dashboard/allBooks"
                 ? "flex my-2 text-sm p-2 bg-blue-100"
                 : "flex my-2 p-2 text-sm"
             }`}
@@ -125,7 +118,7 @@ export default function SideNav() {
             <span className="mr-2">
               <Icon icon="pepicons-pencil:book" width={20} height={20} />
             </span>
-            <span className="my-auto block">My Book</span>
+            <span className="my-auto block">My Books</span>
           </Link>
         </div>
 
