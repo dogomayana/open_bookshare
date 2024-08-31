@@ -16,30 +16,30 @@ export default function NavBar() {
   return (
     <>
       <nav className="w-full py-3 px-4 flex justify-between border-blue-50 border bg-white">
-        <Link href={"/"} className="text-base my-auto hover:text-[#0095eb]">
+        <Link href={"/"} className="my-auto">
           <Image src="/jlogo.png" alt="logo" width={150} height={50} />
         </Link>
         <div className="hidden md:flex space-x-5 my-auto">
           <Link
-            className="text-base font-medium text-gray-900 hover:text-[#0095eb]"
+            className="text-[15px] font-medium text-gray-900 hover:text-[#0095eb]"
             href={user ? "/dashboard" : "/pages/signUp"}
           >
             Dashboard
           </Link>
           <Link
-            className="text-base font-medium text-gray-900 hover:text-[#0095eb]"
+            className="text-[15px] font-medium text-gray-900 hover:text-[#0095eb]"
             href={user ? "/pages/donateBook" : "/pages/signUp"}
           >
             Donate Book
           </Link>
           <Link
-            className="text-base font-medium text-gray-900 hover:text-[#0095eb]"
+            className="text-[15px] font-medium text-gray-900 hover:text-[#0095eb]"
             href={"/pages/about"}
           >
             About
           </Link>
           <Link
-            className="text-base font-medium text-gray-900 hover:text-[#0095eb]"
+            className="text-[15px] font-medium text-gray-900 hover:text-[#0095eb]"
             href={"/pages/contact"}
           >
             Contact
@@ -48,13 +48,13 @@ export default function NavBar() {
 
         <div className={user ? "hidden" : `hidden md:flex space-x-8 my-auto`}>
           <Link
-            className="text-base font-medium p-2 rounded-md text-gray-900 hover:bg-[#0095eb] hover:text-gray-100"
+            className="text-[15px] font-medium p-2 rounded-md text-gray-900 hover:bg-[#0095eb] hover:text-gray-100"
             href={"/pages/signUp"}
           >
             SignUp
           </Link>
           <Link
-            className="text-base font-medium p-2 rounded-md bg-[#0095eb] text-gray-100 hover:bg-white hover:text-[#0095eb]"
+            className="text-[15px] font-medium p-2 rounded-md bg-[#0095eb] text-gray-100 hover:bg-white hover:text-[#0095eb]"
             href={"/pages/logIn"}
           >
             Login

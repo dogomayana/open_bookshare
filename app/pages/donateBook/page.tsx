@@ -15,7 +15,10 @@ function DonateBook() {
     isbn: "",
     authorName: "",
   });
-
+  const [disableSubmit, setDisableSubmit] = React.useState<any>({
+    imgIsLarge: false,
+    pdfIsLarge: false,
+  });
   const [selectedOption, setSelectedOption] = React.useState<string>("");
   const [bookBrief, setBookBrief] = React.useState<string>("");
   const [imgChecker, setImgChecker] = React.useState<any>("");
@@ -34,14 +37,29 @@ function DonateBook() {
     const value = event.target.value;
     setSelectedOption(value);
   };
+
   const bookImgChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     setImgChecker(file);
+    if (imgChecker.size / 1e3 > 400) {
+      () => {
+        setDisableSubmit({ ...disableSubmit, imgIsLarge: true });
+      };
+    }
+
+    console.log(disableSubmit?.imgIsLarge);
   };
 
   const bookPDFChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     setFileChecker(file);
+    if (fileChecker.size / 1e6 > 5) {
+      () => {
+        setDisableSubmit({ ...disableSubmit, pdfIsLarge: true });
+      };
+    }
+
+    console.log(disableSubmit?.pdfIsLarge);
   };
   const bookSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -192,7 +210,7 @@ function DonateBook() {
               hover:file:bg-violet-100"
           />
         </label>
-        {imgChecker != undefined && imgChecker.size / 1e3 > 400 && (
+        {disableSubmit.imgIsLarge == true && (
           <p className="text-sm text-red-700">
             Cover Image should be below 400kb !
           </p>
@@ -214,13 +232,13 @@ function DonateBook() {
               hover:file:bg-violet-100"
           />
         </label>
-        {fileChecker != undefined && fileChecker.size / 1e6 > 5 && (
+        {disableSubmit.pdfIsLarge == true && (
           <p className="text-sm text-red-700">File should be below 5MB !</p>
         )}
         <button
           className="p-3 bg-blue-200 text-blue-700 w-5/12 mx-auto my-8 block"
           type="submit"
-    
+          disabled={disableSubmit.pdfIsLarge == true}
         >
           {isLoading ? "Submiting..." : "Submit"}
         </button>
