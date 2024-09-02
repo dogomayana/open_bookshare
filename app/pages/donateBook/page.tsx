@@ -238,7 +238,7 @@ function DonateBook() {
         <button
           className="p-3 bg-blue-200 text-blue-700 w-5/12 mx-auto my-8 block"
           type="submit"
-          disabled={disableSubmit.pdfIsLarge == true}
+          // disabled={disableSubmit.pdfIsLarge == true}
         >
           {isLoading ? "Submiting..." : "Submit"}
         </button>
