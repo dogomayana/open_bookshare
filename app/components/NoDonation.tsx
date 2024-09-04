@@ -1,10 +1,9 @@
 import Link from "next/link";
 
-export default function NoDonationYet() {
+export default function NoDonationsYet() {
   return (
     <>
-           <div className="w-full md:w-[600px] mx-auto mt-10 p-4 rounded-md shadow-md bg-white">
-
+      <div className="w-full md:w-[600px] mx-auto mt-10 p-4 rounded-md shadow-md bg-white">
         <h1 className="text-lg mb-10">
           Be part of the Bookshare campaign by donating a book
         </h1>

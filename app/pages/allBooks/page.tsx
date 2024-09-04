@@ -5,7 +5,7 @@ export default function Allbooks() {
   return (
     <>
       <NavBar />
-      <AllBooks allBooks={undefined} />
+      <AllBooks />
     </>
   );
 }

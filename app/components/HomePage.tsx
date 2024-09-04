@@ -10,8 +10,11 @@ import Link from "next/link";
 import React from "react";
 import { useUser } from "@/app/context/userContext";
 import { toast } from "sonner";
+// import { getFeaturedBooks } from "@/app/service/fetcher";
+import useSWR from "swr";
+import { supabase } from "../config/supabase";
 
-export default function HomePage() {
+export default function HomePage({ data }: { data: any }) {
   const { user } = useUser();
 
   const quickLinks = ["Home", "About Us", "Team", "Author", "Help"];
@@ -174,7 +177,7 @@ export default function HomePage() {
           </div>
         </main>
       </main>
-      <HomeMain />
+      <HomeMain data={data} />
 
       {/* footer */}
       <footer className="w-full p-4 bg-white">

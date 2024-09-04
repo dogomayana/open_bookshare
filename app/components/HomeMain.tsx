@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
@@ -6,8 +5,11 @@ import { testimonials } from "@/app/testData";
 import { Comic_Neue, Lobster } from "next/font/google";
 import FeaturedPopular from "./FeaturedPopular";
 const lobster = Comic_Neue({ weight: "400", subsets: ["latin"] });
+import { getFeaturedBooks } from "@/app/service/fetcher";
 
-export default function HomeMain() {
+export default function HomeMain({ data }: { data: any }) {
+  // const data = await getFeaturedBooks();
+
   const booksCat = [
     { value: "travel", name: "Travel", imgSrc: "/book3.png" },
     { value: "education", name: "Education", imgSrc: "/book4.png" },
@@ -46,10 +48,10 @@ export default function HomeMain() {
           <h1 className="text-blue-500 mt-8 text-center text-[24px] md:text-[30px] font-bold">
             Featured
           </h1>
-          <FeaturedPopular />
+          <FeaturedPopular data={data} />
           <Link
             href={"/pages/allBooks"}
-            className="pr-2 md:pr-12 mt-2 text-base text-blue-600 cursor-pointer text-end md:float-right block"
+            className="pr-2 md:pr-12 mt-2 text-lg text-blue-600 cursor-pointer text-end md:float-right block"
           >
             View all
           </Link>

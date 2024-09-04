@@ -47,7 +47,7 @@ function DonateBook() {
       };
     }
 
-    console.log(disableSubmit?.imgIsLarge);
+    // console.log(disableSubmit?.imgIsLarge);
   };
 
   const bookPDFChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,31 +58,32 @@ function DonateBook() {
         setDisableSubmit({ ...disableSubmit, pdfIsLarge: true });
       };
     }
-
-    console.log(disableSubmit?.pdfIsLarge);
   };
   const bookSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     try {
       setIsLoading(true);
+      let imgName = imgChecker.name.split(" ").join("_");
+      let fileName = fileChecker.name.split(" ").join("_");
+
       const { data: imgC, error: errC } = await supabase.storage
         .from("book_share")
-        .upload(`book_image/${imgChecker.name}`, imgChecker, {
+        .upload(`book_image/${imgName}`, imgChecker, {
           cacheControl: "3600",
           upsert: true,
         });
 
       const { data: bookPath, error: err } = await supabase.storage
         .from("book_share")
-        .upload(`book_file/${fileChecker.name}`, fileChecker, {
+        .upload(`book_file/${fileName}`, fileChecker, {
           cacheControl: "3600",
           upsert: true,
         });
 
       const { data: imgI } = supabase.storage
         .from("book_share")
-        .getPublicUrl(`book_image/${imgChecker.name}`);
+        .getPublicUrl(`book_image/${imgName}`);
 
       const { error } = await supabase.from("book_share").insert({
         bookName: bookDetails.bookName,
@@ -107,6 +108,8 @@ function DonateBook() {
   return (
     <>
       <NavBar />
+
+      <p className="p-4">Before donating ensure the</p>
       <form
         onSubmit={bookSubmit}
         className="w-full px-3 py-8 my-8 md:w-6/12 mx-auto bg-white"
@@ -238,7 +241,7 @@ function DonateBook() {
         <button
           className="p-3 bg-blue-200 text-blue-700 w-5/12 mx-auto my-8 block"
           type="submit"
-          // disabled={disableSubmit.pdfIsLarge == true}
+          // disabled={disableSubmit?.pdfIsLarge == true}
         >
           {isLoading ? "Submiting..." : "Submit"}
         </button>

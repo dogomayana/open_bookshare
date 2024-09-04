@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function NoDownloadYet() {
+export default function NoDownloadsYet() {
   return (
     <>
       <div className="w-full md:w-[600px] mx-auto mt-10 p-4 rounded-md shadow-md bg-white">

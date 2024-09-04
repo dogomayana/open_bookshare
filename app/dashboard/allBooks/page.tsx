@@ -5,7 +5,7 @@ export default function Allbooks() {
   return (
     <>
       <CatNav />
-      <AllBooks allBooks={undefined} />
+      <AllBooks />
     </>
   );
 }
