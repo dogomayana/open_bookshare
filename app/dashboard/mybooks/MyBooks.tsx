@@ -22,15 +22,12 @@ export default function MyB() {
 
       return;
     }
-    console.log(data);
 
     return data;
   };
   const { data, error } = useSWR("/api/data", getDownloadedBooks, {
     refreshInterval: 1000,
   });
-
-  console.log("mu", error);
 
   // const { data, error, isLoading } = useSWR(
   //   fullName ? ["bookshare_download", fullName] : null,
