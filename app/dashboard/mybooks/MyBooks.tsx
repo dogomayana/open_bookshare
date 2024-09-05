@@ -18,7 +18,7 @@ export default function MyB() {
       )
       .eq("donorName", fName);
     if (error) {
-      console.log(error);
+      // console.log(error);
 
       return;
     }
@@ -29,12 +29,7 @@ export default function MyB() {
     refreshInterval: 1000,
   });
 
-  // const { data, error, isLoading } = useSWR(
-  //   fullName ? ["bookshare_download", fullName] : null,
-  //   () => getDownloadedBooks(fName)
-  // );
-
-  // let data: any = [];
+   
   return (
     <>
       {error ? (

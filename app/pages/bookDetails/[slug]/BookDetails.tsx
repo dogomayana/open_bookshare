@@ -124,11 +124,11 @@ export default function Page({
       </div>
       <article className="w-full p-3 mx-auto mt-20 bg-white">
         <h1 className="text-base font-semibold ml-4">Related Books</h1>
-        <div className="w-full my-8 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
+        {/*}  <div className="w-full my-8 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
           {typeof relatedBooks != undefined &&
             relatedBooks?.map((book: any, index: any) => (
               <div key={index} className="block">
-                {/* <Link href={`/pages/${pol}`}> */}
+                
                 <span className="block">
                   <img
                     src={book.bookImage}
@@ -158,10 +158,10 @@ export default function Page({
                 >
                   Download
                 </Link>
-                {/* </span> */}
+              
               </div>
             ))}
-        </div>
+        </div>*/}
       </article>
     </>
   );
