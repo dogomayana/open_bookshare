@@ -16,8 +16,8 @@ export default function Page({
 }) {
   const { user, fullName } = useUser();
   const fName: any | null = user?.displayName;
-
-  const bookPDF = "book_image/test3.jpg";
+const bookPDF="book_file/SMB_University_120307_Networking_Fundamentals.pdf";
+  //const bookPDF = "book_image/test3.jpg";
 
   async function download(
     event: React.MouseEvent<HTMLButtonElement>
