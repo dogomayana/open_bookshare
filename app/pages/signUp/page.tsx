@@ -41,7 +41,7 @@ export default function SignUp() {
   const provider = new GoogleAuthProvider();
   const auth = getAuth(app);
   auth.languageCode = "en";
-
+/*
   const googleEmail = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -79,6 +79,8 @@ export default function SignUp() {
 
     setIsLoading(false);
   };
+*/
+/*
   function googlePop() {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -101,7 +103,7 @@ export default function SignUp() {
         // ...
       });
   }
-
+*/
   return (
     <>
       <NavBar />
