@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function NoItem({ isOpen, onClose }) {
+export default function NoItem({ isOpen, onClose, item }) {
   if (!isOpen) return null;
   return (
     <>
@@ -19,7 +19,7 @@ export default function NoItem({ isOpen, onClose }) {
           <hr />
 
           <p className="mt-5 text-center text-[15px]">
-            Book Title: <span className="text-gray-500">The Alchemist</span>
+            Book Title: <span className="text-gray-500">{item}</span>
           </p>
           <p className="mt-5 text-center text-[15px]">
             Book Availabilty:{" "}

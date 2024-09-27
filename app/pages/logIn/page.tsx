@@ -17,7 +17,6 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/app/context/userContext";
 
 export default function LogIn() {
-  
   const provider = new GoogleAuthProvider();
   const auth = getAuth(app);
   auth.languageCode = "en";
@@ -42,7 +41,6 @@ export default function LogIn() {
   const googleLogIn = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setIsLoading(true);
-/*
 
     signInWithEmailAndPassword(auth, userInfo.emailAddress, userInfo.password)
       .then((userCredential) => {
@@ -57,11 +55,10 @@ export default function LogIn() {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
-    setIsLoading(false);*/
+    setIsLoading(false);
   };
 
   function googlePop() {
-/*
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -83,7 +80,7 @@ export default function LogIn() {
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
       });
-    setIsLoading(false);*/
+    setIsLoading(false);
   }
   const handleChange: ChangeHandler = (event) => {
     const { name, value } = event.target;

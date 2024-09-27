@@ -45,7 +45,6 @@ export default function SignUp() {
   const googleEmail = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setIsLoading(true);
-/*
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -79,12 +78,10 @@ export default function SignUp() {
       console.error("Error signing in:", errorCode, errorMessage);
     }
 
-    setIsLoading(false);*/
+    setIsLoading(false);
   };
 
-
   function googlePop() {
-/*
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -104,7 +101,7 @@ export default function SignUp() {
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
-      });*/
+      });
   }
 
   return (

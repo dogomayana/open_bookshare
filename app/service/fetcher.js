@@ -7,9 +7,9 @@ export const getUserDetails = async (email) => {
     .eq("email", email);
 
   if (error) {
-    console.log(error.message);
+    return;
   }
-  console.log(data);
+
   return data;
 };
 export const getAllBooks = async () => {
@@ -18,7 +18,17 @@ export const getAllBooks = async () => {
     .select(`bookName,authorName,bookImage,slug`);
 
   if (error) {
-    console.log(error.message);
+    return;
+  }
+  return data;
+};
+export const searchBook = async (bookName) => {
+  const { data, error } = await supabase
+    .from(`book_share`)
+    .select(`bookName,authorName,bookImage,slug`)
+    .ilike("bookName", `%${bookName}%`);
+
+  if (error) {
     return;
   }
   return data;
@@ -30,7 +40,6 @@ export const getFeaturedBooks = async () => {
     .limit(4);
 
   if (error) {
-    console.log(error.details);
     return;
   }
   return data;
@@ -45,10 +54,24 @@ export const getBookBySlug = async (slug) => {
     .eq(`slug`, slug);
 
   if (error) {
-    console.log(error);
+    // console.log(error);
     return;
   }
   return data[0];
+};
+export const getBookByCategory = async (category) => {
+  const { data, error } = await supabase
+    .from(`book_share`)
+    .select(
+      `bookName,authorName,donorName,bookImage,slug,categories,bookBrief,bookPDF,isbn`
+    )
+    .eq(`categories`, category);
+
+  if (error) {
+    // console.log(error);
+    return;
+  }
+  return data;
 };
 export const getRelatedBooks = async (category) => {
   const { data, error } = await supabase

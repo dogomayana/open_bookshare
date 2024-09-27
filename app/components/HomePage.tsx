@@ -9,10 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useUser } from "@/app/context/userContext";
-import { toast } from "sonner";
-// import { getFeaturedBooks } from "@/app/service/fetcher";
-import useSWR from "swr";
-import { supabase } from "../config/supabase";
+import { getAllBooks, searchBook } from "../service/fetcher";
 
 export default function HomePage({ data }: { data: any }) {
   const { user } = useUser();
@@ -22,6 +19,7 @@ export default function HomePage({ data }: { data: any }) {
   const [search, setSearch] = React.useState<string>("");
   const [searchM, setSearchM] = React.useState<string>("");
   const [showModal, setShowModal] = React.useState(false);
+  const [searchResult, setSearchResult] = React.useState<any | undefined>();
 
   const openModal = () => {
     if (typeof document !== undefined) {
@@ -34,8 +32,27 @@ export default function HomePage({ data }: { data: any }) {
       document.body.style.overflow = "auto";
     }
     setShowModal(false);
+    setSearchResult(null);
   };
+  async function bookSearcHD() {
+    let searchData: any | undefined = await searchBook(search);
+    if (searchData?.length > 0) {
+      setSearchResult(searchData);
+      openModal();
+    } else {
+      openModal();
+    }
+  }
+  async function bookSearcHm() {
+    let searchData: any | undefined = await searchBook(searchM);
 
+    if (searchData?.length > 0) {
+      setSearchResult(searchData);
+      openModal();
+    } else {
+      openModal();
+    }
+  }
   return (
     <>
       <NavBar />
@@ -54,9 +71,6 @@ export default function HomePage({ data }: { data: any }) {
               Donate,
             </Link>{" "}
             <span className="text-[#0095eb]">Access, Read.</span>
-            {/* <button onClick={() => toast("This is a sonner toast")}>
-              Render my toast
-            </button> */}
           </h1>
           <Image
             src="/banner.png"
@@ -86,12 +100,23 @@ export default function HomePage({ data }: { data: any }) {
               placeholder="search"
               className="p-3 w-11/12 block shadow-md rounded-md placeholder:italic"
             />
-            <button className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100">
+            <button
+              disabled={searchM == ""}
+              onClick={bookSearcHm}
+              className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100"
+            >
               &#128269;
             </button>
           </div>
-          <button onClick={openModal}>Show modal</button>
-          <NoItem isOpen={showModal} onClose={closeModal} />
+          {searchResult?.length > 0 && showModal ? (
+            <FoundItem
+              isOpen={showModal}
+              onClose={closeModal}
+              item={searchResult}
+            />
+          ) : (
+            <NoItem isOpen={showModal} onClose={closeModal} item={search} />
+          )}
 
           <div className="w-full flex justify-between space-x-5 mt-7 mb-4">
             <Link
@@ -142,11 +167,22 @@ export default function HomePage({ data }: { data: any }) {
                 placeholder="search"
                 className="p-3 w-11/12 block shadow-md rounded-md placeholder:italic"
               />
-              <button className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100">
+              <button
+                disabled={search == ""}
+                onClick={bookSearcHD}
+                className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100"
+              >
                 &#128269;
               </button>
-              <button onClick={openModal}>Show modal</button>
-              <NoItem isOpen={showModal} onClose={closeModal} />
+              {searchResult?.length > 0 && showModal ? (
+                <FoundItem
+                  isOpen={showModal}
+                  onClose={closeModal}
+                  item={searchResult}
+                />
+              ) : (
+                <NoItem isOpen={showModal} onClose={closeModal} item={search} />
+              )}
             </div>
 
             <div className="w-full flex justify-between space-x-2 mt-7 mb-4">
