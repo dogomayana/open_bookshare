@@ -59,7 +59,7 @@ export default function HomePage({ data }: { data: any }) {
       {/* Mobile */}
       <main className="w-full mt-3 md:hidden">
         <div className="w-full p-3">
-          <p className="text-center text-sm text-gray-700">
+          <p className="text-center text-base text-gray-700">
             Let&apos;s make the best investment
           </p>
           <h1 className="text-[32px]   font-extrabold my-8 text-center">
@@ -139,7 +139,7 @@ export default function HomePage({ data }: { data: any }) {
       <main className="w-full mt-3 hidden md:block">
         <main className="w-full p-3 flex justify-evenly bg-gray-100">
           <div className="w-5/12 p-3">
-            <p className="text-sm text-gray-700">
+            <p className="text-base text-gray-700">
               Let&apos;s make the best investment
             </p>
             <h1 className="text-[42px] font-bold my-8 ">
