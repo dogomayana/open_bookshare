@@ -16,8 +16,8 @@ export default function HomePage({ data }: { data: any }) {
 
   const quickLinks = ["Home", "About Us", "Team", "Author", "Help"];
   const legals = ["My Acocunt", "Support", "Privacy Policy", "FAQ", "Terms"];
-  const [search, setSearch] = React.useState<string>("");
-  const [searchM, setSearchM] = React.useState<string>("");
+  const [desktopSearch, setDesktopSearch] = React.useState<string>("");
+  const [mobileSearch, setMobileSearch] = React.useState<string>("");
   const [showModal, setShowModal] = React.useState(false);
   const [searchResult, setSearchResult] = React.useState<any | undefined>();
 
@@ -35,7 +35,7 @@ export default function HomePage({ data }: { data: any }) {
     setSearchResult(null);
   };
   async function bookSearcHD() {
-    let searchData: any | undefined = await searchBook(search);
+    let searchData: any | undefined = await searchBook(desktopSearch);
     if (searchData?.length > 0) {
       setSearchResult(searchData);
       openModal();
@@ -44,7 +44,7 @@ export default function HomePage({ data }: { data: any }) {
     }
   }
   async function bookSearcHm() {
-    let searchData: any | undefined = await searchBook(searchM);
+    let searchData: any | undefined = await searchBook(mobileSearch);
 
     if (searchData?.length > 0) {
       setSearchResult(searchData);
@@ -93,15 +93,15 @@ export default function HomePage({ data }: { data: any }) {
           <div className="flex w-full border border-blue-50 mt-8">
             <input
               type="text"
-              name="searchM"
-              value={searchM}
-              onChange={(e) => setSearchM(e.target.value)}
-              id="searchM"
+              name="mobileSearch"
+              value={mobileSearch}
+              onChange={(e) => setMobileSearch(e.target.value)}
+              id="mobileSearch"
               placeholder="search"
               className="p-3 w-11/12 block shadow-md rounded-md placeholder:italic"
             />
             <button
-              disabled={searchM == ""}
+              disabled={mobileSearch == ""}
               onClick={bookSearcHm}
               className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100"
             >
@@ -115,7 +115,11 @@ export default function HomePage({ data }: { data: any }) {
               item={searchResult}
             />
           ) : (
-            <NoItem isOpen={showModal} onClose={closeModal} item={search} />
+            <NoItem
+              isOpen={showModal}
+              onClose={closeModal}
+              item={desktopSearch}
+            />
           )}
 
           <div className="w-full flex justify-between space-x-5 mt-7 mb-4">
@@ -160,15 +164,15 @@ export default function HomePage({ data }: { data: any }) {
             <div className="flex w-full border border-blue-50 mt-8">
               <input
                 type="text"
-                name="search"
-                id="search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="search"
+                name="desktopSearch"
+                id="desktopSearch"
+                value={desktopSearch}
+                onChange={(e) => setDesktopSearch(e.target.value)}
+                placeholder="desktopSearch"
                 className="p-3 w-11/12 block shadow-md rounded-md placeholder:italic"
               />
               <button
-                disabled={search == ""}
+                disabled={desktopSearch == ""}
                 onClick={bookSearcHD}
                 className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100"
               >
@@ -181,7 +185,11 @@ export default function HomePage({ data }: { data: any }) {
                   item={searchResult}
                 />
               ) : (
-                <NoItem isOpen={showModal} onClose={closeModal} item={search} />
+                <NoItem
+                  isOpen={showModal}
+                  onClose={closeModal}
+                  item={desktopSearch}
+                />
               )}
             </div>
 
